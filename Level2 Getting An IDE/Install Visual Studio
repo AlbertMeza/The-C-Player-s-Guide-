@@ -1,0 +1,7 @@
+IDE = Integrated Development Environment
+
+o Programming is complex; you want an IDE to make programming life easier
+o Visual Studio is the most used IDE for C# programming. Visual Studio Community is free, feature rich, and recommended for beginners.
+o Other C# IDEs exist, including Visual Studio Code and Rider
+
+-make sure to have VS downloaded before moving on

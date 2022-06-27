@@ -6,8 +6,10 @@ namespace Math
     {
         static void Main(string[] args)
         {
-            int triBase = 10;
-            int height = 12;
+            Console.WriteLine("Enter the triangle base: ");
+            int triBase = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the triangle height: ");
+            int height = Convert.ToInt32(Console.ReadLine());
             int area = triBase * height / 2;
             Console.WriteLine("The area of this Triangle is: " + area);
         }

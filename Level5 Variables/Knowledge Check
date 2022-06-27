@@ -1,0 +1,25 @@
+1.
+All variables have a type, name and value
+int x = 5; int = type, x = name, 5= value
+string dummy = "test"; string = type, dummy = name, "test = value
+
+2.
+True: all variables must be declared before being used
+
+3.
+You can reassign a variable but you cannot declare
+
+int x = 5;
+x = 7; is reassigning
+
+int x = 5;
+int x = 7; is not valid
+
+4.
+answer = valid variable name
+1stValue = variable name cannot starting with an integer [0-9]
+value1 = valid variable name
+$message = not valid due to the $
+delete-me = hyphen is not valid
+delete_me = valid variable name
+PI = valid variable name

@@ -9,7 +9,7 @@ namespace Math
             int triBase = 10;
             int height = 12;
             int area = triBase * height / 2;
-            Console.WriteLine(area);
+            Console.WriteLine("The area of this Triangle is: " + area);
         }
     }
 }

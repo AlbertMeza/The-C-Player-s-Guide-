@@ -1,0 +1,21 @@
+using System;
+
+namespace Level4
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("What kind of thing are we talking about?");
+            string a = Console.ReadLine(); //this will describe the object, 'Thing
+            Console.WriteLine("How would you describe it? Big? Azure? Tattered?");
+            string b = Console.ReadLine(); // this will give a description, mainly an adjective 'Namer'
+            string c = "of Doom"; //OF DOOM!
+            string d = "3000"; //model
+            string newItem = a + " " + b + " " + d;
+            /* concatenating the description into newItem variable so that the final Console.WriteLine looks cleaner and easier to read
+             */
+            Console.WriteLine("The " + newItem + " " + c + "!");
+        }
+    }
+}

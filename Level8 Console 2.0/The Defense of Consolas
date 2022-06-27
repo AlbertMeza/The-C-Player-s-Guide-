@@ -1,0 +1,32 @@
+using System;
+
+namespace Level8
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Clear();
+            Console.Title = "The Defense of Consolas";
+
+            int row = 0;
+            int column = 0;
+
+            Console.WriteLine("Enter your target row between 1-8: ");
+            row = Convert.ToInt32(Console.ReadLine()); 
+       
+            Console.WriteLine("Enter your target column between 1-8: ");
+            column = Convert.ToInt32(Console.ReadLine());
+
+            if (column < 8) Console.WriteLine(row + "," + (column+1));
+            if (row < 8) Console.WriteLine((row+1) + "," + column);
+            if (column > 1) Console.WriteLine(row + "," + (column-1));
+            if (row > 1) Console.WriteLine((row-1) + "," + column);
+
+            Console.Beep(440, 1000);
+
+        }
+    }
+}

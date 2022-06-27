@@ -1,0 +1,21 @@
+using System;
+namespace Level3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Do you know what is a Haiku?");
+            Console.WriteLine("Here is an example-");
+            Console.WriteLine();
+            Console.WriteLine("the first cold shower");
+            Console.WriteLine("even the hippo seems to want");
+            Console.WriteLine("a little bit of shampoo");
+        }
+    }
+}
+
+
+
+Question 2
+As computers continue to grow, the amount of statements within a program's limit does as well. This is a question that is memory and space dependement.

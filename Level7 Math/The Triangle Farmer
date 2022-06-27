@@ -1,0 +1,15 @@
+using System;
+
+namespace Math
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int triBase = 10;
+            int height = 12;
+            int area = triBase * height / 2;
+            Console.WriteLine(area);
+        }
+    }
+}

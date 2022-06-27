@@ -1,1 +1,27 @@
+1.
+false, int can store an integer from the range -2,147,483,648 to 2,147,483,648
+
+2.
+byte, short, int, long
+
+3. 
+false, it ranges from 0-255(no negative sign allowed)
+
+4.
+uint, they hold the higher range but the unsigned version starts at 0
+
+5. 
+float, double, decimal
+
+6.
+double has the highest range at less precision
+
+7.
+decimal has the highest precision at 28-29 digits
+
+8.
+The quotes make it a string type
+
+9.
+boolean(bool)
 

@@ -1,6 +1,6 @@
 using System;
 
-namespace Level4
+namespace Level6
 {
     internal class Program
     {

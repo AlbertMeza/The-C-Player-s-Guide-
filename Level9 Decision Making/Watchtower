@@ -1,0 +1,29 @@
+using System;
+
+namespace Level9
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Watchtower";
+
+            Console.WriteLine("Enter the X coordinate of the enemy: ");
+            int x = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the Y coordinate of the enemy: ");
+            int y = Convert.ToInt32(Console.ReadLine());
+            string position = "";
+            if (x == 0 && y == 0) position = "is here!";
+            else if (x < 0 && y > 0) position = "is northwest!";
+            else if (x == 0 && y > 0) position = "is north!";
+            else if (x > 0 && y > 0) position = "is northeast!";
+            else if (x < 0 && y == 0) position = "is west!";
+            else if (x < 0 && y < 0) position = "is southwest!";
+            else if (x == 0 && y < 0) position = "is south!";
+            else if (x > 0 && y == 0) position = "is east!";
+            else position = "southeast!";
+
+            Console.WriteLine("The enemy position " + position);
+        }
+    }
+}

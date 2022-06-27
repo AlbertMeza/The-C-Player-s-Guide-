@@ -1,0 +1,60 @@
+using System;
+
+namespace Level4
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //all the integers values
+            byte num = 11; // 0-255 range
+            short num1 = -123; //-32,768 to 32,767
+            int num2 = 7324573; //-2,147,483,648 to 2,147,483,647
+            long num3 = -178326348748234; //-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+            //the counterparts
+
+            sbyte num4 = -11; // -128-127 range
+            ushort num5 = 48483; //0 to 65,535
+            uint num6 = 732457343; //0 to 4,294,967,295
+            ulong num7 = 178326348748; //0 to 18,446,744,073,709,551,615
+
+            Console.WriteLine("All the integers:");
+            Console.WriteLine("byte: " + num);
+            Console.WriteLine("short: " + num1);
+            Console.WriteLine("int: " + num2);
+            Console.WriteLine("long: " + num3);
+            Console.WriteLine("sbyte: " + num4);
+            Console.WriteLine("ushort: " + num5);
+            Console.WriteLine("uint: " + num6);
+            Console.WriteLine("ulong: " + num7);
+            Console.WriteLine();
+
+            //all the text values
+            char a = 'c';
+            string name = "Albert";
+
+            Console.WriteLine("All the text values:");
+            Console.WriteLine("char: " + a);
+            Console.WriteLine("string: " + name);
+            Console.WriteLine();
+
+            //all the floating-point values
+            float dec1 = 3.14f; //7 digit precision
+            double dec2 = 3.1415926; //15-16 point precision
+            decimal dec3 = 3.33333333333333333m; //28-29 point precision
+
+            Console.WriteLine("All the floating-point values");
+            Console.WriteLine("float: " + dec1);
+            Console.WriteLine("double: " + dec2);
+            Console.WriteLine("decimal: " + dec3);
+            Console.WriteLine();
+
+            //the bool type
+            bool test = true;
+
+            Console.WriteLine("The boolean value: " + test);
+
+        }
+       
+    }
+}

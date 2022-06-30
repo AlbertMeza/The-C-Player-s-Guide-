@@ -1,1 +1,55 @@
+using System;
 
+namespace Level10
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to my shop! ");
+            Console.WriteLine("What's your name?");
+            string name = Console.ReadLine();
+            Console.WriteLine("My name is Tortuga, what would you like?");
+            Console.WriteLine("Pick an option");
+            Console.WriteLine("The folllowing items are available:");
+            Console.WriteLine(" 1 - Rope \n 2 - Torches \n 3 - Climbing Equipment \n 4 - Clean Water \n 5 - Machete \n 6 - Canoe \n 7 - Food Supplies");
+            Console.WriteLine("Please select an option from above");
+            string option = Console.ReadLine();
+
+            switch (option)
+            {
+                case "1":
+                    if (name == "Albert" || name == "albert") Console.WriteLine("Rope: 5gold");
+                    else Console.WriteLine("Rope: 10gold");
+                    break;
+                case "2":
+                    if (name == "Albert" || name == "albert") Console.WriteLine("Torches: 7.5gold");
+                    else Console.WriteLine("Torches: 15gold");
+                    break;
+                case "3":
+                    if (name == "Albert" || name == "albert") Console.WriteLine("Climbing Equipment: 12.5gold");
+                    else Console.WriteLine("Climbing Equipment: 25gold");
+                    break;
+                case "4":
+                    if(name == "Albert" || name == "albert") Console.WriteLine("Clean Water: .5gold");
+                    else Console.WriteLine("Clean Water: 1gold");
+                    break;
+                case "5":
+                    if (name == "Albert" || name == "albert") Console.WriteLine("Machete: 10gold");
+                    else Console.WriteLine("Machete: 20gold");
+                    break;
+                case "6":
+                    if (name == "Albert" || name == "albert") Console.WriteLine("Canoe: 100gold");
+                    else Console.WriteLine("Canoe: 200gold");
+                    break;
+                case "7":
+                    if (name == "Albert" || name == "albert") Console.WriteLine("Canoe: 0.5gold");
+                    else Console.WriteLine("Food Supplies: 1gold");
+                    break;
+                default:
+                    break;
+            }
+
+        }
+    }
+}

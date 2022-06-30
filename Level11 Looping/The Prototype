@@ -1,0 +1,26 @@
+using System;
+
+namespace Chapter11
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("User 1, enter a number between 0 and 100: ");
+            int guess = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
+
+            Console.WriteLine("User 2, enter a number between 0 and 100: ");
+            int guess2 = Convert.ToInt32(Console.ReadLine());
+
+            while (guess != guess2)
+            {
+                if (guess > guess2) Console.WriteLine(guess2 + " is too low.");
+                else Console.WriteLine(guess2 + " is too high");
+                Console.WriteLine("What is your next guess?");
+                guess2= Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine("You guessed the number!");
+        }
+    }
+}

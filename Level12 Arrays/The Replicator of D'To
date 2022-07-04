@@ -1,0 +1,27 @@
+using System;
+
+namespace Chapter12
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[] nums = new int[5]; // initialize an array of 5 integers
+            for (int i = 0; i < nums.Length; i++)
+            {
+                Console.WriteLine("Please enter a number you found in the ancient Replicator of D'To: ");
+                nums[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine("Ah thank you, now let me copy over those integers over to this replicate");
+            int[] replicate = new int[nums.Length];
+            for (int i = 0; i < replicate.Length; i++)
+            {
+                replicate[i] = nums[i];
+                Console.WriteLine($"Value {i+1} for the orignal is {nums[i]}:");
+                Console.WriteLine($"Value {i + 1} for the replica is {replicate[i]}:");
+                Console.WriteLine("I now want to try them as lottery tickets!");
+            }
+
+        }
+    }
+}

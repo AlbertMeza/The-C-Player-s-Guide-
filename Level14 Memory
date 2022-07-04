@@ -1,0 +1,8 @@
+1.False
+2.True
+3.True: 
+4.False: These can be placed in a stack
+5.True: Due to these variable types varying in size
+6.False: Garbage collection collects from the heap
+7.True: Very important concept , reference semantic
+8.False: Very important concept, value semantic 

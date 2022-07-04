@@ -1,1 +1,70 @@
+//I didn't do the color changes, do some customization of your own for how you envision the colors :)
+//I suggest a helper method 
 
+using System;
+
+namespace Chapter14
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.Title = "Hunting the Manticore";
+            int manticore = 10;
+            int consola = 15;
+            int round = 1;
+
+            int position = ReadInt("Player 1, how far away from the city do you want to station the Manitcore?(0-100)");
+            Console.Clear();
+
+            Console.WriteLine("Player 2, it is your turn.");
+            FightOn(position, round, manticore, consola);
+        }
+
+        //recursion method for this game
+        static void FightOn(int position, int round, int manticore, int consola)
+        {                    
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+                             
+            int cannonDamage = CalculateCannon(round);
+            int cannonShot = -1;
+
+            if (manticore < 1 || consola < 1)
+            {
+                if (manticore < 1) Console.WriteLine("Congratulations Consola, you have fended off the Uncoded One's airship. The city of Consolas is saved!");
+                else Console.WriteLine("The city of Consola has officially fallen... this must be a computing error or the Uncoded One is stronger than we all assumed");
+            }
+            else
+            {
+                Console.WriteLine($"STATUS: Round: {round}  City:  {consola}/{15}  Manticore:  {manticore}/{10}");
+                Console.WriteLine($"The cannon is expected to deal {cannonDamage} damage this round.");
+                cannonShot = ReadInt($"Enter desired cannon range: ");
+                if (cannonShot == position)
+                {
+                    Console.WriteLine("That round was a DIRECT HIT!");
+                    manticore -= cannonDamage;
+                }
+                else if (cannonShot > position) Console.WriteLine("That round OVERSHOT the target.");
+                else Console.WriteLine("That round FELL SHORT of the target.");
+                consola--;
+                round++;
+                FightOn(position, round, manticore, consola);
+            }
+        }
+
+        //helper method to calculate the damage done by the cannon
+        static int CalculateCannon(int n)
+        {
+            if (n % 3 == 0 && n % 5 == 0) return 10;
+            else if (n % 5 == 0 || n % 3 == 0) return 3;
+            else return 1;
+        }
+
+        static int ReadInt(string s)
+        {
+            Console.Write(s);
+            int num = Convert.ToInt32(Console.ReadLine());
+            return num;
+        }
+    }
+}

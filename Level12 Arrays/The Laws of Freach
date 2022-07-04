@@ -1,0 +1,25 @@
+using System;
+
+namespace Chapter12
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[] array = new int[] { 4, 51, -7, 13, -99, 15, -8, 45, 90 };
+            int smallest = array[0];
+            foreach(int i in array) //finding the smallest value
+            {
+                if(smallest > i) smallest = i;
+            }
+            int sum = 0;
+            foreach(int i in array) //finding the average/mean of the array
+            {
+                sum += i;
+            }
+            double mean = (double)sum / array.Length;
+            Console.WriteLine("I present to you the lowest value of the array using the new Laws of Freach: " + smallest);
+            Console.WriteLine("I present to you the average of the array using the new Laws of Freach: " + Math.Round(mean,2));
+        }
+    }
+}

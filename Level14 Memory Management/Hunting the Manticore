@@ -1,7 +1,3 @@
-//I didn't do the color changes, do some customization of your own for how you envision the colors :)
-//I suggest a helper method 
-//Challenge change the health from green when above 66%, yellow to when above 33%, and red when below that  
-
 using System;
 
 namespace Chapter14
@@ -15,7 +11,7 @@ namespace Chapter14
             int consola = 15;
             int round = 1;
 
-            int position = ReadInt("Player 1, how far away from the city do you want to station the Manitcore?(0-100)");
+            int position = ReadInt("Player 1, how far away from the city do you want to station the Manitcore?(0-100) ");
             Console.Clear();
 
             Console.WriteLine("Player 2, it is your turn.");
@@ -37,7 +33,13 @@ namespace Chapter14
             }
             else
             {
-                Console.WriteLine($"STATUS: Round: {round}  City:  {consola}/{15}  Manticore:  {manticore}/{10}");
+                Console.Write($"STATUS: Round: {round}  City: ");
+                ConsolaHealth(consola);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("Manticore: ");
+                ManticoreHealth(manticore);
+                Console.ForegroundColor = ConsoleColor.White;
+
                 Console.WriteLine($"The cannon is expected to deal {cannonDamage} damage this round.");
                 cannonShot = ReadInt($"Enter desired cannon range: ");
                 if (cannonShot == position)
@@ -47,9 +49,49 @@ namespace Chapter14
                 }
                 else if (cannonShot > position) Console.WriteLine("That round OVERSHOT the target.");
                 else Console.WriteLine("That round FELL SHORT of the target.");
+
                 consola--;
                 round++;
+
                 FightOn(position, round, manticore, consola);
+            }
+        }
+
+        //helper method for health display, harded coded for clarity and beginner friendly
+        static void ConsolaHealth(int consola)
+        {
+            if (consola >= 10)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write($"{consola}/15  ");
+            }
+            else if (consola >= 5)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write($"{consola}/15  ");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write($"{consola}/15  ");
+            }
+        }
+        static void ManticoreHealth(int manticore)
+        {
+            if (manticore >= 7)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"{manticore}/10");
+            }
+            else if (manticore >= 4)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"{manticore}/10");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"{manticore}/10");
             }
         }
 

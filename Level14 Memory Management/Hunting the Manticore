@@ -1,5 +1,6 @@
 //I didn't do the color changes, do some customization of your own for how you envision the colors :)
 //I suggest a helper method 
+//Challenge change the health from green when above 66%, yellow to when above 33%, and red when below that  
 
 using System;
 

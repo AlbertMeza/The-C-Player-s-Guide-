@@ -1,0 +1,49 @@
+using System;
+
+namespace Chapter16
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Chest chest = Chest.Lock; //Make a variable whose type is the new enumeration
+            string input = "";
+
+            while (true)
+            {
+                switch (chest)
+                {
+                    case (Chest.Lock):
+                        Console.Write("The chest is locked. What do you want to do? ");
+                        input = Console.ReadLine().ToLower();
+                        if (input == "unlock") chest = Chest.Unlock;
+                        break;
+                    case (Chest.Unlock):
+                        Console.Write("The chest is unlocked. What do you want to do? ");
+                        input = Console.ReadLine().ToLower();
+                        if (input == "open") chest = Chest.Open;
+                        break;
+                    case (Chest.Open):
+                        Console.Write("The chest is open. What do you want to do? ");
+                        input = Console.ReadLine().ToLower();
+                        if (input == "close") chest = Chest.Close;
+                        break;
+                    case (Chest.Close):
+                        Console.Write("The chest is closed. What do you want to do? ");
+                        input = Console.ReadLine().ToLower();
+                        if (input == "lock") chest = Chest.Lock;
+                        break;
+                }  
+            }
+        }
+
+        //define an enumeration
+        enum Chest 
+        { Lock,
+          Unlock, 
+          Open,
+          Close
+        }
+    }
+    
+}

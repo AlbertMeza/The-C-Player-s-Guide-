@@ -1,0 +1,112 @@
+using System;
+
+namespace Chapter17
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            (Type type, Ingredient ingredient, Seasoning seasoning) soup = GetSoup();
+            Console.WriteLine($"{soup.seasoning} {soup.ingredient} {soup.type}");
+        }
+
+        static (Type, Ingredient, Seasoning) GetSoup()
+        {
+            Console.WriteLine("Hello, Welcome to the soup shop!");
+            Console.WriteLine("What type of soup do you want?");
+            Console.WriteLine("We have Soup(so), Stew(st), and Gumbo(g)");
+            string soupType = Console.ReadLine().ToLower();
+            Type type = new Type();
+            switch (soupType)
+            {
+                case ("so"):
+                    type = Type.Soup;
+                    break;
+                case ("soup"):
+                    type = Type.Soup;
+                    break;
+                case ("st"):
+                    type = Type.Stew;
+                    break;
+                case ("stew"):
+                    type = Type.Soup;
+                    break;
+                case ("g"):
+                    type = Type.Gumbo;
+                    break;
+                case ("gumbo"):
+                    type = Type.Soup;
+                    break;
+                default:
+                    break;
+            }
+            Console.WriteLine("We have Mushroom(m), Chicken(ch), Carrots(ca), and Potatoes(p) as the main ingredients, please pick one. ");
+            string ingredType = Console.ReadLine().ToLower();
+            Ingredient ingredient = new Ingredient();
+            switch (ingredType)
+            {
+                case ("m"):
+                    ingredient = Ingredient.Mushroom;
+                    break;
+                case ("mushroom"):
+                    ingredient = Ingredient.Mushroom;
+                    break;
+                case ("ch"):
+                    ingredient = Ingredient.Chicken;
+                    break;
+                case ("chicken"):
+                    ingredient = Ingredient.Mushroom;
+                    break;
+                case ("ca"):
+                    ingredient = Ingredient.Carrot;
+                    break;
+                case ("carrot"):
+                    ingredient = Ingredient.Mushroom;
+                    break;
+                case ("p"):
+                    ingredient = Ingredient.Potatoe;
+                    break;
+                case ("potato"):
+                    ingredient = Ingredient.Mushroom;
+                    break;
+                default:
+                    break;
+            }
+            Console.WriteLine("We have Spicy(sp), Salty(sa) and Sweet(sw) as the type of seasoning, please pick one. ");
+            string seasonType = Console.ReadLine().ToLower();
+            Seasoning seasoning = new Seasoning();
+            switch (seasonType)
+            {
+                case ("sp"):
+                    seasoning = Seasoning.Spicy;
+                    break;
+                case ("spicy"):
+                    seasoning = Seasoning.Spicy;
+                    break;
+                case ("sa"):
+                    seasoning = Seasoning.Salty;
+                    break;
+                case ("salty"):
+                    seasoning = Seasoning.Spicy;
+                    break;
+                case ("sw"):
+                    seasoning = Seasoning.Sweet;
+                    break;
+                case ("sweet"):
+                    seasoning = Seasoning.Spicy;
+                    break;
+                default:
+                    break;
+            }
+            return (type, ingredient, seasoning);
+        }
+
+
+        enum Type { Soup,Stew,Gumbo }
+
+        enum Ingredient{ Mushroom, Chicken, Carrot, Potatoe }
+
+        enum Seasoning { Spicy, Salty, Sweet }
+    }
+    
+}

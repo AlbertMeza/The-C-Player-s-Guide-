@@ -60,9 +60,9 @@ namespace Chapter20
 
         class Arrow
         {
-            private Arrowhead _arrowhead { get; set; }
-            private Fletching _fletching { get; set; } 
-            private int _shaft { get; set; }
+            private Arrowhead _arrowhead { get; }
+            private Fletching _fletching { get; } 
+            private int _shaft { get;  }
 
             public Arrow(Arrowhead arrowhead, Fletching fletching, int shaft)
             {

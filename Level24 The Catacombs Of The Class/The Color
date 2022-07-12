@@ -1,0 +1,39 @@
+Color color1 = new(121, 121, 121);
+Color color2 = new(75, 75, 75);
+Color staticColor = Color.red;
+Color staticColor1 = Color.orange;
+
+color1.DisplayRGB();
+color2.DisplayRGB();
+staticColor.DisplayRGB();
+staticColor1.DisplayRGB();
+
+public class Color
+{
+    public int Red { get; }
+    public int Green { get; }
+    public int Blue { get; }
+
+    public Color(int red, int green, int blue)
+    {
+        Red = red;
+        Green = green;
+        Blue = blue;
+    }
+
+    public static Color white = new(255, 255, 255);
+    public static Color black = new(0, 0, 0);
+    public static Color red = new(255, 0, 0);
+    public static Color orange = new(255, 165, 0);
+    public static Color yellow = new(255, 255, 0);
+    public static Color green = new(0, 128, 0);
+    public static Color blue = new(0, 0, 255);
+    public static Color purple = new(128, 0, 128);
+
+    public void DisplayRGB()
+    {
+        Console.Write($"R:{this.Red} ");
+        Console.Write($"G:{this.Green} ");
+        Console.WriteLine($"B:{this.Blue}");
+    }
+}

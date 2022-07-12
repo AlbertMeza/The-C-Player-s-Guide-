@@ -49,3 +49,5 @@ public class Card
 
 public enum CardColor { Red, Green, Blue, Yellow } //must be public to access within Card class
 public enum CardRank { One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, MoneySign, Percent, UpCarat, Ampersand } 
+
+//This one was able to be an enumeration due to it being a short list of 4 colors instead of the 255x255x255 combinations 

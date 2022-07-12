@@ -1,0 +1,85 @@
+Console.WriteLine("Hello, let's set you up with a new locked door");
+Console.WriteLine("Please supply a password(the screen will clear shortly after so please be careful)");
+int password = Convert.ToInt32(Console.ReadLine()); Console.Clear();
+Door door = new Door(password);
+
+while (true)
+{
+    Console.WriteLine($"The current door state is {door._state}");
+    Console.WriteLine("Hello, what would you like to do if your door? The options are open(o), close(c), lock(l), unlock(u) or change password(cp).");
+    string input = Console.ReadLine();
+    switch (input)
+    {
+        case ("o"):
+            door.OpenDoor();
+            break;
+        case ("c"):
+            door.CloseDoor();
+            break;
+        case ("l"):
+            door.LockDoor();
+            break;
+        case ("u"):
+            Console.WriteLine("Please enter your password below");
+            int unlockPass = Convert.ToInt32(Console.ReadLine()); Console.Clear();
+            door.UnlockDoor(unlockPass);
+            break;
+        case ("cp"):
+            Console.WriteLine("Please enter your password below");
+            int passwordCheck = Convert.ToInt32(Console.ReadLine()); Console.Clear();
+            if (door.CheckPassword(passwordCheck))
+            {
+                Console.WriteLine("Please enter a new password");
+                int newPassword = Convert.ToInt32(Console.ReadLine()); Console.Clear();
+                door.ChangePassword(newPassword);
+
+            }
+            else Console.WriteLine("Authorization denied. Password incorrect.");
+            break;
+
+    }
+}
+public class Door
+{
+    private int _password;
+    public DoorState _state { get; private set; }
+
+    public Door(DoorState state)
+    {
+        _state = state;
+    }
+
+    public Door(int initialPassword)
+    {
+        this._password = initialPassword;
+        _state = DoorState.Closed;
+    }
+
+    public void CloseDoor()
+    {
+        if (this._state == DoorState.Open) this._state = DoorState.Closed;
+    }
+    public void OpenDoor()
+    {
+        if (this._state == DoorState.Closed) this._state = DoorState.Open; 
+    }   
+    public void LockDoor()
+    {
+        if (this._state == DoorState.Closed) this._state = DoorState.Locked;
+    }
+    public void UnlockDoor(int password)
+    {
+        if (this._state == DoorState.Locked && this._password == password) this._state = DoorState.Open;
+    }
+    public bool CheckPassword(int password)
+    {
+        return (password == this._password); 
+    }
+    public void ChangePassword(int newPassword)
+    {
+        this._password = newPassword;
+        Console.WriteLine("Succesful password change");
+    }
+}
+
+public enum DoorState { Locked, Open, Closed }

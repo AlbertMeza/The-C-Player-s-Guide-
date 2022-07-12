@@ -1,0 +1,51 @@
+makeDeck();
+
+void makeDeck()
+{
+    CardColor[] color = makeColors();
+    CardRank[] ranks = makeRanks();
+
+    foreach (CardColor c in color)
+    {
+        foreach (CardRank r in ranks)
+        {
+            Card card = new Card(c, r);
+            Console.WriteLine($"The {card._color} {card._rank}");
+        }
+    }
+
+}
+CardColor[] makeColors()
+{
+    CardColor[] colors = new CardColor[] { CardColor.Red, CardColor.Green, CardColor.Blue, CardColor.Yellow };
+    return colors;
+}
+
+CardRank[] makeRanks()
+{
+    CardRank[] ranks = new CardRank[] { CardRank.One, CardRank.Two, CardRank.Three, CardRank.Four, CardRank.Five, CardRank.Six, CardRank.Seven, CardRank.Eight, CardRank.Nine, CardRank.Ten, CardRank.MoneySign, CardRank.Percent, CardRank.UpCarat, CardRank.Ampersand };
+    return ranks;
+}
+
+
+public class Card
+{
+    public CardColor _color { get; }
+    public CardRank _rank { get; }
+
+    public Card(CardColor color, CardRank rank)
+    {
+        _color = color;
+        _rank = rank;
+    }
+
+    public bool isFaceCard()
+    {
+        if (_rank == CardRank.MoneySign || _rank == CardRank.Percent || _rank == CardRank.UpCarat || _rank == CardRank.Ampersand)
+            return true;
+        else return false;
+    }
+}
+
+public enum CardColor { Red, Green, Blue, Yellow } //must be public to access within Card class
+public enum CardRank { One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, MoneySign, Percent, UpCarat, Ampersand } 

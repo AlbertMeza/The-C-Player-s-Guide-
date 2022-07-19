@@ -1,0 +1,7 @@
+Board class 
+  -a method to display the board
+  -Constructor with some RNG
+  -method that compares current instance of the board versus a solved one very turn
+Player class
+  -moves as a property
+  -get movement from the user

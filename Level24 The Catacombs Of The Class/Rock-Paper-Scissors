@@ -1,0 +1,62 @@
+Console.Write("Enter player one's name: ");
+string name1 = Console.ReadLine();
+Console.Write("Enter player two's name: ");
+string name2 = Console.ReadLine();
+Console.Clear();
+
+Player playerOne = new Player(name1);
+Player playerTwo = new Player(name2);
+
+while (true)
+{
+    playerOne.MakeChoice();
+    playerTwo.MakeChoice();
+    Winner(playerOne, playerTwo);
+    Scoreboard(playerOne, playerTwo);
+}
+
+void Winner(Player player1, Player player2)
+{
+    if (player1._choice == player2._choice) Console.WriteLine("This one is a tie!");
+    else if ((player1._choice == RPS.Rock && player2._choice == RPS.Scissors) || (player1._choice == RPS.Paper && player2._choice == RPS.Rock) || (player1._choice == RPS.Scissors && player2._choice == RPS.Paper))
+    {
+        Console.WriteLine($"{player1.name} wins this round");
+        player1.wins++;
+    }
+    else
+    {
+        Console.WriteLine($"{player2.name} wins this round");
+        player2.wins++;
+    }
+}
+
+void Scoreboard(Player player1, Player player2)
+{
+    Console.WriteLine($"{player1.name} currently has: {player1.wins} wins");
+    Console.WriteLine($"{player2.name} currently has: {player2.wins} wins");
+}
+
+public class Player
+{
+    public string name;
+    public RPS _choice;
+    public int wins = 0;
+
+    public Player(string name)
+    {
+        this.name = name; 
+    }
+    public RPS MakeChoice()
+    {
+        Console.WriteLine("Please pick Rock(r), Paper(p), or Scissors(s)");
+        string input = Console.ReadLine().ToLower();
+        return input switch
+        {
+            "r" => _choice = RPS.Rock,
+            "p" => _choice = RPS.Paper,
+            "s" => _choice = RPS.Scissors
+        };
+    }
+}
+
+public enum RPS { Rock, Paper, Scissors }

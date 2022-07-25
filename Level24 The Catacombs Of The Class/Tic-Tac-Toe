@@ -1,0 +1,193 @@
+new Game().Play();
+
+public class Game 
+{
+    public void Play()
+    {
+        Board board = new Board();
+        Boardstate state = new Boardstate();
+        int moves = 0;
+        int game = 1;
+        int playerOneWins = 0, playerTwoWins = 0;
+        
+        Console.WriteLine("Welcome to Tic-Tac-Toe!");
+        Console.WriteLine("Player one enter your name: ");
+        string input = Console.ReadLine();
+        Player playerOne = new Player(input, Symbols.O);
+        Console.Clear();
+        Console.WriteLine("Player two enter your name: ");
+        string input2 = Console.ReadLine();
+        Player playerTwo = new Player(input2, Symbols.X);
+        Console.Clear();
+
+        Player currentPlayer = playerTwo;
+        while (playerOneWins < 3 || playerTwoWins < 3)
+        {
+            if (currentPlayer == playerOne) currentPlayer = playerTwo;
+            else currentPlayer = playerOne;
+            Console.WriteLine($"This is game {game}");
+            Console.WriteLine($"The current score is {playerOne._name} with {playerOneWins} wins and {playerTwo._name} with {playerTwoWins} wins.");
+            moves = 0;
+            while (moves < 9)
+            {
+                state.Draw(board);
+                Console.WriteLine($"It is {currentPlayer._symbol}'s turn");
+                Square square = currentPlayer.MakeMove(board);
+                board.FillCell(square._row, square._col, currentPlayer._symbol);
+                if (playerTwo.Won(board, Symbols.X))
+                {
+                    state.Draw(board);
+                    Console.WriteLine("X won!");
+                    game++;
+                    playerTwoWins++;
+                    state.ResetBoard(board);
+                     
+                    break;
+                }
+                else if (playerOne.Won(board, Symbols.O))
+                {
+                    state.Draw(board);
+                    Console.WriteLine("O won!");
+                    game++;
+                    playerOneWins++;
+                    state.ResetBoard(board);
+                    break;
+                }
+
+                if (currentPlayer == playerOne) currentPlayer = playerTwo;
+                else currentPlayer = playerOne;
+                moves++;
+                if (moves == 9)
+                {
+                    state.Draw(board);
+                    Console.WriteLine("Cat's game!");
+                    game++;
+                    state.ResetBoard(board);
+                }
+                }
+            Console.Write("Press enter to go to the next game: ");
+            Console.ReadLine();
+            Console.Clear();
+
+            }
+        if (playerTwoWins == 3) Console.WriteLine($"Congratulations {playerTwo._name} on the win!");
+        else Console.WriteLine($"Congratulations {playerOne._name} on the win!");
+
+
+    }
+}
+public class Player 
+{
+    public string _name { get; set; }
+    public Symbols _symbol { get; set; }
+
+    public Player(string name, Symbols symbol)
+    {
+        this._name = name;
+        this._symbol = symbol;
+    }
+
+    public Square MakeMove(Board board)
+    {
+        while (true)
+        {
+            Console.Write("Enter your next move: ");
+            ConsoleKey key = Console.ReadKey().Key;
+            Console.WriteLine();
+
+            Square choice = key switch
+            {
+                ConsoleKey.NumPad7 => new Square(0,0),
+                ConsoleKey.NumPad8 => new Square(0,1),
+                ConsoleKey.NumPad9 => new Square(0,2),
+                ConsoleKey.NumPad4 => new Square(1,0),
+                ConsoleKey.NumPad5 => new Square(1,1),
+                ConsoleKey.NumPad6 => new Square(1,2),
+                ConsoleKey.NumPad1 => new Square(2,0),
+                ConsoleKey.NumPad2 => new Square(2,1),
+                ConsoleKey.NumPad3 => new Square(2,2)
+            };
+
+            if (board.IsEmpty(choice._row, choice._col)) return choice;
+            else Console.WriteLine("Please pick an empty square");
+        }
+        
+    }
+    public bool Won(Board board, Symbols value)
+    {
+        //check rows
+        if (board.CellInfo(0, 0) == value && board.CellInfo(0, 1) == value && board.CellInfo(0, 2) == value) return true;
+        if (board.CellInfo(1, 0) == value && board.CellInfo(1, 1) == value && board.CellInfo(1, 2) == value) return true;
+        if (board.CellInfo(2, 0) == value && board.CellInfo(2, 1) == value && board.CellInfo(2, 2) == value) return true;
+        //check columns
+        if (board.CellInfo(0, 0) == value && board.CellInfo(1, 0) == value && board.CellInfo(2, 0) == value) return true;
+        if (board.CellInfo(0, 1) == value && board.CellInfo(1, 1) == value && board.CellInfo(2, 1) == value) return true;
+        if (board.CellInfo(0, 2) == value && board.CellInfo(1, 2) == value && board.CellInfo(2, 2) == value) return true;
+        //check diagonals
+        if (board.CellInfo(0, 0) == value && board.CellInfo(1, 1) == value && board.CellInfo(2, 2) == value) return true;
+        if (board.CellInfo(2, 0) == value && board.CellInfo(1, 1) == value && board.CellInfo(0, 2) == value) return true;
+
+        return false;
+    }
+}
+public class Board
+{
+    public Symbols[,] cells = new Symbols[3, 3];
+
+    public bool IsEmpty(int row, int column)
+    {
+        if (cells[row, column] == Symbols.Empty) return true;
+        else return false;
+    }
+    
+    public void FillCell(int row, int column, Symbols move) => cells[row, column] = move;
+
+    public Symbols CellInfo(int row, int column) => cells[row, column];
+}
+public class Boardstate 
+{ 
+    public void Draw(Board board)
+    {
+        char[,] symbols = new char[3, 3];
+        symbols[0, 0] = GetCellSymbol(board.CellInfo(0, 0));
+        symbols[0, 1] = GetCellSymbol(board.CellInfo(0, 1));
+        symbols[0, 2] = GetCellSymbol(board.CellInfo(0, 2));
+        symbols[1, 0] = GetCellSymbol(board.CellInfo(1, 0));
+        symbols[1, 1] = GetCellSymbol(board.CellInfo(1, 1));
+        symbols[1, 2] = GetCellSymbol(board.CellInfo(1, 2));
+        symbols[2, 0] = GetCellSymbol(board.CellInfo(2, 0));
+        symbols[2, 1] = GetCellSymbol(board.CellInfo(2, 1));
+        symbols[2, 2] = GetCellSymbol(board.CellInfo(2, 2));
+
+        Console.WriteLine($"{symbols[0,0]} | {symbols[0, 1]} | {symbols[0, 2]}");
+        Console.WriteLine("---+--+---");
+        Console.WriteLine($"{symbols[1, 0]} | {symbols[1, 1]} | {symbols[1, 2]}");
+        Console.WriteLine("---+--+---");
+        Console.WriteLine($"{symbols[2, 0]} | {symbols[2, 1]} | {symbols[2, 2]}");
+    }
+    
+    public void ResetBoard(Board board)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                board.FillCell(i, j, Symbols.Empty);
+            }
+        }
+    }
+    private char GetCellSymbol(Symbols cell) => cell switch { Symbols.X => 'X', Symbols.O => 'O', Symbols.Empty => ' ' };
+}
+public class Square 
+{ 
+    public int _row { get; set; }
+    public int _col { get; set; }  
+    public Square(int row, int col)
+    {
+        _row = row;
+        _col = col;
+    }  
+}
+
+
+public enum Symbols { Empty, X, O};//the options for each cell space

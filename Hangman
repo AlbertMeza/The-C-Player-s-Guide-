@@ -1,9 +1,0 @@
-File
-  -contains a bundle of random words to play with(dictionary)
-Game
-  -method to print the current state
-  -print current state
-  -method to detect that game is over
-Player 
-  -method to pick letter and check used letters
-  -method to check if the player has lost

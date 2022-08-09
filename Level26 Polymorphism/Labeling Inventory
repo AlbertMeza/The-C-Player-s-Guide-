@@ -1,0 +1,113 @@
+Console.WriteLine("Hello traveler!");
+Console.WriteLine("The journey ahead will be long");
+Console.WriteLine("Take this pack as a gift to aid you with your travels");
+Pack pack = new Pack(5,10,10);
+Console.WriteLine($"This initial pack can hold up to {pack.maxCount} items, with a max weight of {pack.maxWeight} and a max volume of {pack.maxVolume}");
+Console.Write("Press enter if you understand: ");
+Console.ReadLine();
+Console.Clear();
+
+
+while (true)
+{
+    Console.WriteLine($"Your pack still has space for {pack.maxCount - pack.currCount} items, {pack.maxWeight - pack.currWeight} weight and {pack.maxVolume - pack.currVol} volume");
+
+    Console.WriteLine("What do you like to add for your adventure?");
+    Console.WriteLine("Arrow(a)");
+    Console.WriteLine("Bow(b)");
+    Console.WriteLine("Rope(r)");
+    Console.WriteLine("Water(w)");
+    Console.WriteLine("Food(f)");
+    Console.WriteLine("Sword(s)");
+    string choice = Console.ReadLine().ToLower();
+
+    InventoryItem item = choice switch
+    {
+        "a" => new Arrow(),
+        "b" => new Bow(),
+        "r" => new Rope(),
+        "w" => new Water(),
+        "f" => new Food(),
+        "s" => new Sword()
+    };
+
+    if (pack.Add(item)) Console.WriteLine("Great choice, this item has been added to your pack");
+    else
+    {
+        Console.WriteLine("That item doesn't fit in the pack");
+        break;
+    }
+    Console.Clear();
+}
+public class Pack 
+{
+    public int maxCount { get; init; }
+    public int maxWeight { get; init; }
+    public int maxVolume { get; init; }
+
+    public int currCount { get; private set; }
+    public double currWeight { get; private set; } 
+    public double currVol { get; private set; }
+    
+    public InventoryItem[] items;
+
+    public Pack(int maxItems, int maxWeight, int maxVolume)
+    {
+        this.maxCount = maxItems;
+        this.maxWeight = maxWeight;
+        this.maxVolume = maxVolume;
+        items = new InventoryItem[maxItems];
+    }
+
+    public bool Add(InventoryItem item)
+    {
+        if (currCount == maxCount) return false;
+        if (currWeight + item.weight > maxWeight) return false;
+        if (currVol + item.volume > maxVolume) return false;
+
+        items[currCount] = item;
+        currCount++;
+        currWeight += item.weight;
+        currVol += item.volume;
+        return true;
+    }
+}
+
+public class InventoryItem
+{
+    public double weight;
+    public double volume;
+
+    public InventoryItem(double weight, double volume)
+    {
+        this.weight = weight;
+        this.volume = volume;
+    }
+}
+
+public class Arrow : InventoryItem {
+    public Arrow() : base(0.1, 0.05) { }
+
+    public override string ToString() => "Arrow";
+}
+public class Bow : InventoryItem { 
+    public Bow() : base(1, 4) { }
+
+    public override string ToString() => "Bow";
+}
+public class Rope : InventoryItem { 
+    public Rope() : base(1, 1.5) { }
+
+    public override string ToString() => "Rope";
+}
+public class Water : InventoryItem { 
+    public Water() : base(2, 3) { } 
+    public override string ToString() => "Water"; }
+public class Food : InventoryItem { 
+    public Food() : base(1, 0.5) { }
+    public override string ToString() => "Food";
+}
+public class Sword : InventoryItem { 
+    public Sword() : base(5, 3) { }
+    public override string ToString() => "Sword";
+}
